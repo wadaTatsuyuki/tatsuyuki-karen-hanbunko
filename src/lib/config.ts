@@ -1,4 +1,5 @@
 import "server-only";
+import { supabaseKeyProblem } from "./supabase-key";
 import type { MemberId } from "./types";
 
 export interface Member {
@@ -49,4 +50,9 @@ export function missingEnv(): string[] {
     }
   }
   return required.filter((name) => !env(name));
+}
+
+/** 設定値の中身の誤り（例: 公開用の Supabase キー） */
+export function envProblem(): string | null {
+  return supabaseKeyProblem(env("SUPABASE_SERVICE_ROLE_KEY"));
 }

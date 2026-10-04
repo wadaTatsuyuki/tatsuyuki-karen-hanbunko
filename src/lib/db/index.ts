@@ -1,4 +1,5 @@
 import "server-only";
+import { supabaseKeyProblem } from "../supabase-key";
 import { createLocalDb } from "./local";
 import { createSupabaseDb } from "./supabase";
 import type { Db } from "./types";
@@ -10,6 +11,8 @@ export function getDb(): Db {
   const url = process.env.SUPABASE_URL;
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (url && key) {
+    const problem = supabaseKeyProblem(key);
+    if (problem) throw new Error(problem);
     db = createSupabaseDb(url, key);
   } else if (process.env.NODE_ENV === "production" && !process.env.HANBUNKO_ALLOW_LOCAL_DB) {
     throw new Error("SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY が設定されていません");

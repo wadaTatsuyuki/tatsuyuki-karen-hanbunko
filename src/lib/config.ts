@@ -38,3 +38,15 @@ export function isAiEnabled(): boolean {
 export function getAiModel(): string {
   return env("ANTHROPIC_MODEL") ?? "claude-opus-5-5";
 }
+
+/** 本番で必須なのに未設定の環境変数（設定ミスを画面で知らせるため） */
+export function missingEnv(): string[] {
+  const required = ["MEMBER1_PIN", "MEMBER2_PIN"];
+  if (process.env.NODE_ENV === "production") {
+    required.push("SESSION_SECRET");
+    if (!process.env.HANBUNKO_ALLOW_LOCAL_DB) {
+      required.push("SUPABASE_URL", "SUPABASE_SERVICE_ROLE_KEY");
+    }
+  }
+  return required.filter((name) => !env(name));
+}

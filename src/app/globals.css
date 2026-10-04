@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #faf7f2;
+  --surface: #ffffff;
+  --surface-2: #f3eee7;
+  --ink: #2b2622;
+  --ink-2: #5f5750;
+  --muted: #8a8079;
+  --line: #ebe4dc;
+  --accent: #c4561f;
+  --accent-soft: #fbe9df;
+  --on-accent: #ffffff;
+  --chart: #d0602a;
+  --m1: #2a7f8c;
+  --m1-soft: #e0f1f3;
+  --m2: #b8527a;
+  --m2-soft: #f8e6ee;
+  --good: #2f7d4f;
+  --good-soft: #e3f3e9;
+  --danger: #b4372f;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1b1816;
+    --surface: #262220;
+    --surface-2: #2f2a27;
+    --ink: #f3eee9;
+    --ink-2: #cdc4bc;
+    --muted: #a39990;
+    --line: #3a3430;
+    --accent: #e3804c;
+    --accent-soft: #3d2a20;
+    --on-accent: #1b1816;
+    --chart: #d86a34;
+    --m1: #5bb5c2;
+    --m1-soft: #1f3337;
+    --m2: #e08aac;
+    --m2-soft: #3a2530;
+    --good: #6cc392;
+    --good-soft: #1f3327;
+    --danger: #ef7d74;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
+  --color-chart: var(--chart);
+  --color-m1: var(--m1);
+  --color-m1-soft: var(--m1-soft);
+  --color-m2: var(--m2);
+  --color-m2-soft: var(--m2-soft);
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --color-danger: var(--danger);
+  --font-sans: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI",
+    Meiryo, system-ui, sans-serif;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* iOS で入力時に勝手にズームしないよう 16px 以上にする */
+input,
+select,
+textarea {
+  font-size: 16px;
+}
